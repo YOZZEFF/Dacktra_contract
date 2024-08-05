@@ -100,9 +100,12 @@ class ContractController extends Controller
 
     protected function sendAgreementEmail($userEmail, $filePath)
     {
+        // send email to doctor
         Mail::to($userEmail)->send(new ContractMail($filePath, $userEmail));
 
-        // Mail::to('contract@dacktra.com')->send(new ContractMail($filePath, $userEmail));
+        // send email to  Dacktra 
+
+        Mail::to('contract@dacktra.com')->send(new ContractMail($filePath, $userEmail));
 
     }
 
