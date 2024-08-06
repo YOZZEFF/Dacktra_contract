@@ -14,7 +14,7 @@ class JoinusController extends Controller
         return view('user_area.join_us_en');
     }
 
-    public function submitEnglishForm(Request $request)
+    public function submitForm(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -47,7 +47,7 @@ class JoinusController extends Controller
         ];
 
        // Handle file uploads
-       if ($request->hasFile('scientific_certificate_image')) {
+    if ($request->hasFile('scientific_certificate_image')) {
         $data['scientific_certificate_image'] = $request->file('scientific_certificate_image')->store('images', 'public');
     }
 

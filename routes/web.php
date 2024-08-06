@@ -18,7 +18,8 @@ Route::get('/', function () {
 Route::middleware(['clear.contract.session'])->group(function () {
 
 Route::get('/', [JoinusController::class, 'showEnglishForm'])->name('english.form');
-Route::post('/doctorDataEn/store', [JoinusController::class,'submitEnglishForm'])->name('english.form.store');
+Route::post('/doctorDataAr/store', [JoinusController::class,'submitForm'])->name('arabic.form.store');
+Route::post('/doctorDataEn/store', [JoinusController::class,'submitForm'])->name('english.form.store');
 Route::get('/arabic', [JoinusController::class,'showArabicForm'])->name('arabic.form');
 
 });

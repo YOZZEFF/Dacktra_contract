@@ -91,150 +91,108 @@
                     <h2 style="direction: rtl; text-align: right;">انضم إلينا</h2>
                     <p style="direction: rtl; text-align: right;font-size:18px;">إذا كان لديك أي أسئلة، فلا تتردد في التواصل معنا.</p>
                     <!-- Form -->
-                    <form class="form" method="post">
+                    <form class="form" method="post" action="{{ route('arabic.form.store') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input type="text" name="name" placeholder="" required="" >
                                 </div>
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group" >
                                     <input type="email" name="email" placeholder="البريد الإلكتروني" required="">
                                 </div>
+                                @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input type="text" name="phone" placeholder="الهاتف" required="">
                                 </div>
+                                @error('phone')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input type="password" name="password" placeholder="كلمة المرور" required="">
                                 </div>
+                                @error('password')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             </div>
 
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <select name="department" class="nice-select" >
+                                    <select name="department" class="nice-select">
                                         <option value="">القسم</option>
-                                        <option value="1">طبيب أسنان</option>
-                                        <option value="2">الجراحة العامة</option>
-                                        <option value="3">جراحة التجميل</option>
-                                        <option value="4">الأمراض الجلدية</option>
-                                        <option value="5">طب الأعصاب</option>
-                                        <option value="6">طب الأطفال</option>
-                                        <option value="7">طب العيون</option>
-                                        <option value="8">جراحة المسالك البولية</option>
-                                        <option value="9">طب النساء والتوليد</option>
-                                        <option value="10">طب العظام</option>
-                                        <option value="11">طب القلب</option>
-                                        <option value="12">الأنف والأذن والحنجرة</option>
-                                        <option value="13">علم الأورام</option>
-                                        <option value="14">التخدير</option>
-                                        <option value="15">الطب النفسي</option>
-                                        <option value="16">جراحة الأعصاب</option>
-                                        <option value="17">العناية المركزة</option>
-                                        <option value="18">الطوارئ</option>
-                                        <option value="19">طب الشيخوخة</option>
-                                        <option value="20">الأشعة</option>
-                                        <option value="21">علم الأمراض</option>
-                                        <option value="22">الطب النووي</option>
-                                        <option value="23">أمراض الدم</option>
-                                        <option value="24">الروماتيزم</option>
-                                        <option value="25">الأمراض المعدية</option>
-                                        <option value="26">الغدد الصماء</option>
-                                        <option value="27">طب الكلى</option>
-                                        <option value="28">طب الرئة</option>
-                                        <option value="29">الحساسية</option>
-                                        <option value="30">أمراض الجهاز الهضمي</option>
-                                        <option value="31">علم الأدوية السريرية</option>
-                                        <option value="32">طب الأسرة</option>
-                                        <option value="33">الصحة العامة</option>
-                                        <option value="34">صحة العمل</option>
-                                        <option value="35">إدارة الصحة</option>
-                                        <option value="36">الطب الشرعي</option>
-                                        <option value="37">طب الرياضة</option>
-                                        <option value="38">طب الشيخوخة</option>
-                                        <option value="39">علم السمع</option>
-                                        <option value="41">جراحة الدماغ والأعصاب</option>
-                                        <option value="42">جراحة العمود الفقري</option>
-                                        <option value="43">تقنيات الإنجاب المساعدة (ICSI و IVF)</option>
-                                        <option value="44">الروماتيزم</option>
-                                        <option value="45">الغدد الصماء</option>
-                                        <option value="46">أمراض الجهاز الهضمي</option>
-                                        <option value="47">جراحة الأطفال</option>
-                                        <option value="49">جراحة القلب والصدر</option>
-                                        <option value="50">الحساسية والمناعة</option>
-                                        <option value="51">طب الكلى</option>
-                                        <option value="52">طب الأسرة</option>
-                                        <option value="53">الطب العام</option>
-                                        <option value="55">جراحة العظام</option>
-                                        <option value="57">طب إدارة الألم</option>
-                                        <option value="58">جراحة الأوعية الدموية</option>
-                                        <option value="59">الحيوانات الأليفة</option>
-                                        <option value="60">جراحة الأورام</option>
-                                        <option value="61">الأوعية الدموية</option>
-                                        <option value="62">طب القلب</option>
-                                        <option value="65">استشاري مشاكل الإدمان</option>
-                                        <option value="66">استشاري المشاكل الجنسية</option>
-                                        <option value="67">زرع الأسنان</option>
-                                        <option value="68">تجميل البشرة</option>
-                                        <option value="69">جهاز التناسل</option>
-                                        <option value="71">التغذية العلاجية</option>
-                                        <option value="73">مراقبة النمو</option>
-                                        <option value="74">الطب النفسي</option>
-                                        <option value="75">زرع الأعصاب</option>
-                                        <option value="77">الإدمان</option>
-                                        <option value="78">تعديل السلوك</option>
-                                        <option value="79">الإرشاد الأسري</option>
-                                        <option value="80">الروماتيزم</option>
-                                        <option value="81">الطب الرياضي</option>
-                                        <option value="82">جراحة العمود الفقري</option>
-                                        <option value="83">المفاصل</option>
-                                        <option value="84">التخصيب في المختبر (IVF)</option>
-                                        <option value="85">التنظير الداخلي</option>
-                                        <option value="87">أمراض الجهاز الهضمي</option>
-                                        <option value="88">مرض السكري</option>
-                                        <option value="89"></option>
-                                        <option value="90">أمراض الكلى</option>
-                                        <option value="91">طب القلب</option>
-                                        <option value="93">الدم والمناعة</option>
-                                        <option value="94">جراحة العيون والليزر</option>
-                                        <option value="95">شفط الدهون</option>
-                                        <option value="97">علاج الحروق</option>
-                                        <option value="99">أمراض الجهاز الهضمي</option>
-                                        <option value="100">الطبيب الداخلي</option>
-                                        <option value="101">التغذية</option>
-                                        <option value="109">جراحة العمود الفقري</option>
-                                        <option value="110">طب الأطفال</option>
-                                        <option value="111">التغذية</option>
-                                        <option value="112">التنظير الداخلي</option>
-                                        <option value="113">أمراض الكبد</option>
-                                        <option value="115">الروماتيزم</option>
-                                        <option value="117">الطب الرياضي</option>
-                                        <option value="118">المفاصل</option>
-                                        <option value="119">مرض السكري</option>
-                                        <option value="120">الأشعة الصوتية</option>
-                                        <option value="121">تطعيمات الحيوانات الأليفة</option>
-                                        <option value="123">تجميل الحيوانات الأليفة</option>
-                                        <option value="124">صعوبة التعلم</option>
-                                        <option value="129">جراحة الفم والفك</option>
+                                        <option value="طبيب أسنان">طبيب أسنان</option>
+                                        <option value="الجراحة العامة">الجراحة العامة</option>
+                                        <option value="جراحة التجميل">جراحة التجميل</option>
+                                        <option value="الأمراض الجلدية">الأمراض الجلدية</option>
+                                        <option value="طب الأعصاب">طب الأعصاب</option>
+                                        <option value="طب الأطفال">طب الأطفال</option>
+                                        <option value="طب العيون">طب العيون</option>
+                                        <option value="جراحة المسالك البولية">جراحة المسالك البولية</option>
+                                        <option value="طب النساء والتوليد">طب النساء والتوليد</option>
+                                        <option value="طب العظام">طب العظام</option>
+                                        <option value="طب القلب">طب القلب</option>
+                                        <option value="الأنف والأذن والحنجرة">الأنف والأذن والحنجرة</option>
+                                        <option value="علم الأورام">علم الأورام</option>
+                                        <option value="التخدير">التخدير</option>
+                                        <option value="الطب النفسي">الطب النفسي</option>
+                                        <option value="جراحة الأعصاب">جراحة الأعصاب</option>
+                                        <option value="العناية المركزة">العناية المركزة</option>
+                                        <option value="الطوارئ">الطوارئ</option>
+                                        <option value="طب الشيخوخة">طب الشيخوخة</option>
+                                        <option value="الأشعة">الأشعة</option>
+                                        <option value="علم الأمراض">علم الأمراض</option>
+                                        <option value="الطب النووي">الطب النووي</option>
+                                        <option value="أمراض الدم">أمراض الدم</option>
+                                        <option value="الروماتيزم">الروماتيزم</option>
+                                        <option value="الأمراض المعدية">الأمراض المعدية</option>
+                                        <option value="الغدد الصماء">الغدد الصماء</option>
+                                        <option value="طب الكلى">طب الكلى</option>
+                                        <option value="طب الرئة">طب الرئة</option>
+                                        <option value="الحساسية">الحساسية</option>
+                                        <option value="أمراض الجهاز الهضمي">أمراض الجهاز الهضمي</option>
+                                        <option value="علم الأدوية السريرية">علم الأدوية السريرية</option>
+                                        <option value="طب الأسرة">طب الأسرة</option>
+                                        <option value="الصحة العامة">الصحة العامة</option>
+                                        <option value="صحة العمل">صحة العمل</option>
+                                        <option value="إدارة الصحة">إدارة الصحة</option>
+                                        <option value="الطب الشرعي">الطب الشرعي</option>
+                                        <option value="طب الرياضة">طب الرياضة</option>
+                                        <option value="علم السمع">علم السمع</option>
+                                        <option value="تقنيات الإنجاب المساعدة">تقنيات الإنجاب المساعدة (ICSI و IVF)</option>
+                                        <option value="طب إدارة الألم">طب إدارة الألم</option>
+                                        <option value="جراحة الأوعية الدموية">جراحة الأوعية الدموية</option>
+                                        <option value="الحيوانات الأليفة">الحيوانات الأليفة</option>
+                                        <option value="الإدمان">الإدمان</option>
+                                        <option value="الإرشاد الأسري">الإرشاد الأسري</option>
+                                        <option value="تعديل السلوك">تعديل السلوك</option>
+                                        <option value="التغذية العلاجية">التغذية العلاجية</option>
                                     </select>
+
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="checkbox-container" style="font-size:18px;">
                                     <label>
-                                        <input type="checkbox" name="clinic" value="clinic">
+                                        <input type="checkbox" name="job[]" value="clinic">
                                         العيادة
                                     </label>
                                     <label>
-                                        <input type="checkbox" name="home_visit" value="home_visit">
+                                        <input type="checkbox" name="job[]" value="home_visit">
                                         الزيارة المنزلية
                                     </label>
                                     <label>
-                                        <input type="checkbox" name="online_consultant" value="online_consultant">
+                                        <input type="checkbox" name="job[]" value="online_consultant">
                                         الاستشارة عبر الإنترنت
                                     </label>
                                 </div>
@@ -243,36 +201,37 @@
                                 <div class="form-group">
                                     <select name="city" class="nice-select">
                                         <option value="">المدينة</option>
-                                        <option value="1">القاهرة</option>
-                                        <option value="3">الجيزة</option>
-                                        <option value="4">الإسكندرية</option>
-                                        <option value="5">قنا</option>
-                                        <option value="7">كفر الشيخ</option>
-                                        <option value="8">سيناء</option>
-                                        <option value="9">المنيا</option>
-                                        <option value="10">بورسعيد</option>
-                                        <option value="11">السويس</option>
-                                        <option value="12">الأقصر</option>
-                                        <option value="13">الدقهلية</option>
-                                        <option value="14">الغربية</option>
-                                        <option value="15">أسيوط</option>
-                                        <option value="6">القليوبية</option>
-                                        <option value="16">الإسماعيلية</option>
-                                        <option value="17">الفيوم</option>
-                                        <option value="18">الشرقية</option>
-                                        <option value="19">أسوان</option>
-                                        <option value="20">دمياط</option>
-                                        <option value="21">البحيرة</option>
-                                        <option value="22">سوهاج</option>
-                                        <option value="23">البحر الأحمر</option>
-                                        <option value="24">المنوفية</option>
-                                        <option value="25">مطروح</option>
-                                        <option value="27">الوادي الجديد</option>
-                                        <option value="28">الرياض</option>
-                                        <option value="29">جدة</option>
-                                        <option value="30">مكة المكرمة</option>
-                                        <option value="32">الساحل الشمالي</option>
+                                        <option value="القاهرة">القاهرة</option>
+                                        <option value="الجيزة">الجيزة</option>
+                                        <option value="الإسكندرية">الإسكندرية</option>
+                                        <option value="قنا">قنا</option>
+                                        <option value="كفر الشيخ">كفر الشيخ</option>
+                                        <option value="سيناء">سيناء</option>
+                                        <option value="المنيا">المنيا</option>
+                                        <option value="بورسعيد">بورسعيد</option>
+                                        <option value="السويس">السويس</option>
+                                        <option value="الأقصر">الأقصر</option>
+                                        <option value="الدقهلية">الدقهلية</option>
+                                        <option value="الغربية">الغربية</option>
+                                        <option value="أسيوط">أسيوط</option>
+                                        <option value="القليوبية">القليوبية</option>
+                                        <option value="الإسماعيلية">الإسماعيلية</option>
+                                        <option value="الفيوم">الفيوم</option>
+                                        <option value="الشرقية">الشرقية</option>
+                                        <option value="أسوان">أسوان</option>
+                                        <option value="دمياط">دمياط</option>
+                                        <option value="البحيرة">البحيرة</option>
+                                        <option value="سوهاج">سوهاج</option>
+                                        <option value="البحر الأحمر">البحر الأحمر</option>
+                                        <option value="المنوفية">المنوفية</option>
+                                        <option value="مطروح">مطروح</option>
+                                        <option value="الوادي الجديد">الوادي الجديد</option>
+                                        <option value="الرياض">الرياض</option>
+                                        <option value="جدة">جدة</option>
+                                        <option value="مكة المكرمة">مكة المكرمة</option>
+                                        <option value="الساحل الشمالي">الساحل الشمالي</option>
                                     </select>
+
                                 </div>
                             </div>
 
@@ -307,7 +266,7 @@
                                 <div class="form-group">
                                     <label style="font-size:18px;">صور العيادة *</label>
                                     <div class="file-input-container">
-                                        <input type="file" name="clinic_photos" id="clinic-photos" required>
+                                        <input type="file" name="clinic_photos" id="clinic-photos" >
                                         <span class="file-input-label">اختر ملف</span>
                                     </div>
                                     <div class="file-name" id="clinic-photos-name">لم يتم اختيار ملف</div>
